@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="1.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="1.1.0" />
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="6.10.0-alpha" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Qwerty.DDD.Application\Qwerty.DDD.Application.csproj" />
+    <ProjectReference Include="..\Qwerty.DDD.Application.Interfaces\Qwerty.DDD.Application.Interfaces.csproj" />
+    <ProjectReference Include="..\Qwerty.DDD.Domain.Repository.Interfaces\Qwerty.DDD.Domain.Repository.Interfaces.csproj" />
+    <ProjectReference Include="..\Qwerty.DDD.Infrastructure.Repository\Qwerty.DDD.Infrastructure.Repository.csproj" />
+    <ProjectReference Include="..\Qwerty.DDD.Repository\Qwerty.DDD.Repository.csproj" />
+    <ProjectReference Include="..\Framework.Domain.Core\Framework.Domain.Core.csproj" />
+    <ProjectReference Include="..\Framework.Infrastructure.Core\Framework.Infrastructure.Core.csproj" />
+    <ProjectReference Include="..\Framework.Infrastructure.Interfaces.Core\Framework.Infrastructure.Interfaces.Core.csproj" />
+  </ItemGroup>
+
+</Project>

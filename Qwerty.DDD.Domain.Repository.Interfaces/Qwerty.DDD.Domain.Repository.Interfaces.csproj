@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Qwerty.DDD.Domain\Qwerty.DDD.Domain.csproj" />
+    <ProjectReference Include="..\Qwerty.DDD.Infrastructure\Qwerty.DDD.Infrastructure.csproj" />
+    <ProjectReference Include="..\Framework.Infrastructure.Interfaces.Core\Framework.Infrastructure.Interfaces.Core.csproj" />
+  </ItemGroup>
+
+</Project>
