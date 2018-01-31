@@ -55,6 +55,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Common.Core", "Fr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Qwerty.DDD.Api", "Qwerty.DDD.Api\Qwerty.DDD.Api.csproj", "{6721100E-A7C3-41E8-BBA2-B076E3EC23F0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7.IdentityServer4", "7.IdentityServer4", "{24AA9C15-2D45-4862-9C14-19600D8F2A3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer4.Authorization.Web", "IdentityServer4.Authorization.Web\IdentityServer4.Authorization.Web.csproj", "{F175CEDF-3314-45D2-BA08-494564D5D321}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -305,6 +309,18 @@ Global
 		{6721100E-A7C3-41E8-BBA2-B076E3EC23F0}.Release|x64.Build.0 = Release|Any CPU
 		{6721100E-A7C3-41E8-BBA2-B076E3EC23F0}.Release|x86.ActiveCfg = Release|Any CPU
 		{6721100E-A7C3-41E8-BBA2-B076E3EC23F0}.Release|x86.Build.0 = Release|Any CPU
+		{F175CEDF-3314-45D2-BA08-494564D5D321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F175CEDF-3314-45D2-BA08-494564D5D321}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F175CEDF-3314-45D2-BA08-494564D5D321}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F175CEDF-3314-45D2-BA08-494564D5D321}.Debug|x64.Build.0 = Debug|Any CPU
+		{F175CEDF-3314-45D2-BA08-494564D5D321}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F175CEDF-3314-45D2-BA08-494564D5D321}.Debug|x86.Build.0 = Debug|Any CPU
+		{F175CEDF-3314-45D2-BA08-494564D5D321}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F175CEDF-3314-45D2-BA08-494564D5D321}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F175CEDF-3314-45D2-BA08-494564D5D321}.Release|x64.ActiveCfg = Release|Any CPU
+		{F175CEDF-3314-45D2-BA08-494564D5D321}.Release|x64.Build.0 = Release|Any CPU
+		{F175CEDF-3314-45D2-BA08-494564D5D321}.Release|x86.ActiveCfg = Release|Any CPU
+		{F175CEDF-3314-45D2-BA08-494564D5D321}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -330,6 +346,7 @@ Global
 		{03D34254-508C-449F-983E-CEB1E0766626} = {D184B4F4-7DB8-4177-AAB2-658520569116}
 		{788092C8-B1DB-425B-8F30-8517AD865FBA} = {D184B4F4-7DB8-4177-AAB2-658520569116}
 		{6721100E-A7C3-41E8-BBA2-B076E3EC23F0} = {708BC592-6E52-4CAF-901B-4ABB233A2560}
+		{F175CEDF-3314-45D2-BA08-494564D5D321} = {24AA9C15-2D45-4862-9C14-19600D8F2A3C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4BEC769B-BC32-428F-9753-B5FDCF09812E}

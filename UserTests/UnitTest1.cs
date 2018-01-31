@@ -1,6 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Threading.Tasks;
+using IdentityModel.Client;
 using Microsoft.EntityFrameworkCore;
 using Qwerty.DDD.Application.Interfaces.UserServiceInterfaces;
 using Qwerty.DDD.Domain;
@@ -33,6 +34,18 @@ namespace UserTests
         {
             var user = new User { Id = 3, Name = "Q" };
             var result = await _userService.Delete(user);
+        }
+
+        [Fact]
+        public async Task Test4()
+        {
+            var client = new DiscoveryClient($"http://localhost:5000/") { Policy = { RequireHttps = false } };
+            var disco = await client.GetAsync();
+            var tokenClient = new TokenClient(disco.TokenEndpoint, "ro.Client", "secret");
+            var tokenResponse = await tokenClient.RequestResourceOwnerPasswordAsync("qwerty", "a123", "api1 offline_access");
+
+            var reTokenResponse = await tokenClient.RequestRefreshTokenAsync(tokenResponse.RefreshToken);
+
         }
     }
 }

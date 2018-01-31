@@ -17,5 +17,10 @@ namespace Qwerty.DDD.Repository.UserRepository
         {
             return Entities.Where(i => i.Id == id);
         }
+
+        public IQueryable<User> ValidUser(string userName, string password)
+        {
+            return Entities.Where(a => a.Name == userName && a.Password == password);
+        }
     }
 }

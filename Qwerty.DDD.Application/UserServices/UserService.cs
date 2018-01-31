@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Framework.Infrastructure.Interfaces.Core;
+using Microsoft.EntityFrameworkCore;
 using Qwerty.DDD.Application.Interfaces.UserServiceInterfaces;
 using Qwerty.DDD.Domain;
 using Qwerty.DDD.Domain.Repository.Interfaces.UserRepositoryInterfaces;
@@ -11,12 +12,12 @@ namespace Qwerty.DDD.Application.UserServices
     public class UserService : IUserService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IUserRepository _identityRepository;
+        private readonly IUserRepository _userRepository;
 
-        public UserService(IUnitOfWork unitOfWork, IUserRepository identityRepository)
+        public UserService(IUnitOfWork unitOfWork, IUserRepository userRepository)
         {
             _unitOfWork = unitOfWork;
-            _identityRepository = identityRepository;
+            _userRepository = userRepository;
         }
 
         public async Task<bool> Add(User identity)
@@ -72,6 +73,11 @@ namespace Qwerty.DDD.Application.UserServices
                 _unitOfWork.Rollback();
                 throw;
             }
+        }
+
+        public async Task<bool> ValiedUser(string userName, string password)
+        {
+            return await _userRepository.ValidUser(userName, password).AnyAsync();
         }
     }
 }
