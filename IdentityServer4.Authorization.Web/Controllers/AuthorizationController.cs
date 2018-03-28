@@ -9,18 +9,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IdentityServer4.Authorization.Web.Controllers
 {
-    [Route("Authorization/v1")]
+    [Route("authorization/v1")]
     public class AuthorizationController : Controller
     {
         // GET: api/<controller>
         [HttpGet]
-        [Route("user.token.get")]
+        [Route("authorization.token.get")]
         public async Task<IActionResult> Get()
         {
             var client = new DiscoveryClient($"http://localhost:5000/") { Policy = { RequireHttps = false } };
             var disco = await client.GetAsync();
-            var tokenClient = new TokenClient(disco.TokenEndpoint, "ro.Client", "secret");
-            var tokenResponse = await tokenClient.RequestResourceOwnerPasswordAsync("qwerty", "qqq", "api1 offline_access");
+            var tokenClient = new TokenClient(disco.TokenEndpoint, "app.client", "secret");
+            var tokenResponse = await tokenClient.RequestResourceOwnerPasswordAsync("qwerty", "123", "item offline_access");
 
 //            var reTokenResponse = await tokenClient.RequestRefreshTokenAsync(tokenResponse.RefreshToken);
             return Ok(new { is_success = true, token = tokenResponse });

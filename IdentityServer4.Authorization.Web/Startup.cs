@@ -1,4 +1,5 @@
-﻿using IdentityServer4.Validation;
+﻿using IdentityServer4.Authorization.Web.Service;
+using IdentityServer4.Validation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,8 +22,7 @@ namespace IdentityServer4.Authorization.Web
             //添加数据库连接
 //                        services.Configure(Configuration["data:ConnectionString"]);
 
-            services.AddTransient<IResourceOwnerPasswordValidator, ResourceOwnerPasswordValidator>();
-//            services.AddTransient<IProfileService, ProfileService>();
+            services.AddTransient<IUserService, UserService>();
 
             var builder = services.AddIdentityServer();
             builder.AddInMemoryClients(Clients.Get());
@@ -30,9 +30,10 @@ namespace IdentityServer4.Authorization.Web
             builder.AddInMemoryApiResources(Scopes.GetApiScopes());
 //            builder.AddProfileService<IProfileService>();
             builder.AddDeveloperSigningCredential();
+            builder.AddResourceOwnerValidator<ResourceOwnerPasswordValidator>();
             //                        builder.AddTestUsers(Clients.GeTestUsers());
 
-                       
+
 
             // Add framework services.
             services.AddMvc()

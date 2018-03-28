@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using IdentityServer4.Models;
 using IdentityServer4.Test;
 
@@ -8,6 +9,12 @@ namespace IdentityServer4.Authorization.Web
     {
         public static IEnumerable<Client> Get()
         {
+            var apis = new List<string>();
+            Scopes.GetApiScopes().ToList().ForEach(x => apis.Add(x.Name));
+            apis.Add(IdentityServerConstants.StandardScopes.OfflineAccess);
+            apis.Add(IdentityServerConstants.StandardScopes.OpenId);
+            apis.Add(IdentityServerConstants.StandardScopes.Profile);
+
             return new List<Client>
             {
                 new Client
@@ -16,11 +23,11 @@ namespace IdentityServer4.Authorization.Web
                     ClientSecrets = {new Secret("secret".Sha256())},
                       AllowOfflineAccess=true,
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    AllowedScopes = {"api1", "api2.read_only"}
+                    AllowedScopes = apis
                 },
-                 new Client
+                new Client
                 {
-                    ClientId = "ro.Client",
+                    ClientId = "app.client",
                     ClientSecrets ={new Secret("secret".Sha256())},
                     AllowOfflineAccess = true,
 //                    RefreshTokenUsage = TokenUsage.OneTimeOnly,
@@ -28,7 +35,31 @@ namespace IdentityServer4.Authorization.Web
 //                    UpdateAccessTokenClaimsOnRefresh = true,
 //                    AccessTokenLifetime = Convert.ToInt32(TimeSpan.FromMinutes(16).TotalSeconds),
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
-                    AllowedScopes = { "api1","api2.read_only" }
+                    AllowedScopes = apis
+                },
+                new Client
+                {
+                    ClientId = "web.client",
+                    ClientSecrets ={new Secret("secret".Sha256())},
+                    AllowOfflineAccess = true,
+//                    RefreshTokenUsage = TokenUsage.OneTimeOnly,
+//                    RefreshTokenExpiration = TokenExpiration.Sliding,
+//                    UpdateAccessTokenClaimsOnRefresh = true,
+//                    AccessTokenLifetime = Convert.ToInt32(TimeSpan.FromMinutes(16).TotalSeconds),
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                    AllowedScopes = apis
+                },
+                 new Client
+                {
+                    ClientId = "h5.client",
+                    ClientSecrets ={new Secret("secret".Sha256())},
+                    AllowOfflineAccess = true,
+//                    RefreshTokenUsage = TokenUsage.OneTimeOnly,
+//                    RefreshTokenExpiration = TokenExpiration.Sliding,
+//                    UpdateAccessTokenClaimsOnRefresh = true,
+//                    AccessTokenLifetime = Convert.ToInt32(TimeSpan.FromMinutes(16).TotalSeconds),
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                    AllowedScopes = apis
                 },
                 new Client
                 {
@@ -43,14 +74,7 @@ namespace IdentityServer4.Authorization.Web
                     PostLogoutRedirectUris = {"http://localhost:7017/index.html"},
                     AllowedCorsOrigins = {"http://localhost:7017"},
 
-                    AllowedScopes =
-                    {
-                        IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile,
-                        IdentityServerConstants.StandardScopes.Email,
-                        "api1",
-                        "api2.read_only"
-                    }
+                    AllowedScopes =apis
                 },
                 new Client
                 {
@@ -66,14 +90,7 @@ namespace IdentityServer4.Authorization.Web
                     PostLogoutRedirectUris = {"http://localhost:21402/"},
                     FrontChannelLogoutUri = "http://localhost:21402/signout-oidc",
 
-                    AllowedScopes =
-                    {
-                        IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile,
-                        IdentityServerConstants.StandardScopes.Email,
-                        "api1",
-                        "api2.read_only"
-                    },
+                    AllowedScopes =apis
                 }
             };
         }

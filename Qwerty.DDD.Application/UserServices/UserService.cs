@@ -79,5 +79,10 @@ namespace Qwerty.DDD.Application.UserServices
         {
             return await _userRepository.ValidUser(userName, password).AnyAsync();
         }
+
+        public async Task<User> Login(string userName, string password)
+        {
+            return await _userRepository.ValidUser(userName, password).FirstOrDefaultAsync();
+        }
     }
 }

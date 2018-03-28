@@ -10,9 +10,7 @@ namespace IdentityServer4.Authorization.Web
             return new IdentityResource[]
             {
                 new IdentityResources.OpenId(),
-                new IdentityResources.Email(),
-                new IdentityResources.Address(),
-                new IdentityResource("roles", new[] { "role" })
+                new IdentityResources.Profile(),
             };
         }
 
@@ -20,34 +18,9 @@ namespace IdentityServer4.Authorization.Web
         {
             return new List<ApiResource>
             {
-                new ApiResource
-                {
-                    Name = "api",
-                    ApiSecrets =
-                    {
-                        new Secret("secret".Sha256())
-                    },
-                    Scopes =
-                    {
-                        new Scope
-                        {
-                            Name = "api1"
-                        },
-                        new Scope
-                        {
-                            Name = "api2"
-                        },
-                        new Scope
-                        {
-                            Name = "api3"
-                        },
-                        new Scope
-                        {
-                            Name = "api4.with.roles",
-                            UserClaims = { "role" }
-                        }
-                    }
-                }
+                new ApiResource("item", "商品"){ UserClaims = new List<string> {"role"}},
+                new ApiResource("logistics", "物流"){ UserClaims = new List<string> {"role"}},
+                new ApiResource("user", "用户"){ UserClaims = new List<string> {"role"}},
             };
         }
     }

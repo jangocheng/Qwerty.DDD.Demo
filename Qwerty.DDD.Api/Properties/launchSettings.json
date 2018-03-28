@@ -18,12 +18,11 @@
     },
     "Qwerty.DDD.Api": {
       "commandName": "Project",
-      "launchBrowser": true,
       "launchUrl": "api/values",
       "environmentVariables": {
         "ASPNETCORE.ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:35630/"
+      "applicationUrl": "http://localhost:5001/"
     }
   }
 }
