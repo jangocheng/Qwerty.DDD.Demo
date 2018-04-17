@@ -1,10 +1,13 @@
 ﻿using Qwerty.DDD.Infrastructure.Repository;
 using Framework.Infrastructure.Core;
 using Framework.Infrastructure.Interfaces.Core;
+using Framework.Infrastructure.Interfaces.Core.Event;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Qwerty.DDD.Application.Interfaces.UserServiceInterfaces;
 using Qwerty.DDD.Application.UserServices;
+using Qwerty.DDD.Domain.EventHandlers;
+using Qwerty.DDD.Domain.Events;
 using Qwerty.DDD.Domain.Repository.Interfaces.UserRepositoryInterfaces;
 using Qwerty.DDD.Repository.UserRepository;
 
@@ -19,11 +22,15 @@ namespace Qwerty.DDD.BootStrapping
             //service.AddDbContext<CommodityDbContext>(options =>options.UseMySQL(connectionString));
 
             service.AddTransient<IUnitOfWork, UnitOfWork>();
-            service.AddScoped<IDbContext, CommodityDbContext>();
-            service.AddSingleton<IWorkContext, WorkContext>();
+            service.AddTransient<IDbContext, CommodityDbContext>();
+            service.AddTransient<IWorkContext, WorkContext>();
 
             service.AddTransient<IUserRepository, UserRepository>();
             service.AddTransient<IUserService, UserService>();
+
+
+            service.AddTransient<IEventBus, EventBus>();
+            service.AddTransient<IEventHandler<UserIdentity>, UserEventHanler>();
         }
     }
 }

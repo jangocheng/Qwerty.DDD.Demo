@@ -32,7 +32,7 @@ namespace UserTests
         [Fact]
         public async Task Test3()
         {
-            var user = new User { Id = 3, Name = "Q" };
+            var user = new User();
             var result = await _userService.Delete(user);
         }
 

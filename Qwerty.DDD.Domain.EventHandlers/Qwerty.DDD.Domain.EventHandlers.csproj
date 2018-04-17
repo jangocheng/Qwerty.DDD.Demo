@@ -1,18 +1,18 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard1.6</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="6.10.0-alpha" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="1.1.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Qwerty.DDD.Domain.Events\Qwerty.DDD.Domain.Events.csproj" />
-    <ProjectReference Include="..\Qwerty.DDD.Domain\Qwerty.DDD.Domain.csproj" />
     <ProjectReference Include="..\Framework.Domain.Core\Framework.Domain.Core.csproj" />
     <ProjectReference Include="..\Framework.Infrastructure.Interfaces.Core\Framework.Infrastructure.Interfaces.Core.csproj" />
+    <ProjectReference Include="..\Framework.Infrastructure.Ioc.Core\Framework.Infrastructure.Ioc.Core.csproj" />
+    <ProjectReference Include="..\Qwerty.DDD.Domain.Events\Qwerty.DDD.Domain.Events.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="5.2.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Framework.Infrastructure.Interfaces.Core\Framework.Infrastructure.Interfaces.Core.csproj" />
+    <ProjectReference Include="..\Qwerty.DDD.Domain.Events\Qwerty.DDD.Domain.Events.csproj" />
     <ProjectReference Include="..\Qwerty.DDD.Domain.ValueObject\Qwerty.DDD.Domain.ValueObject.csproj" />
     <ProjectReference Include="..\Qwerty.DDD.Infrastructure\Qwerty.DDD.Infrastructure.csproj" />
     <ProjectReference Include="..\Framework.Domain.Core\Framework.Domain.Core.csproj" />

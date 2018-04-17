@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Framework.Domain.ValueObjects\Framework.Domain.ValueObjects.csproj" />
+    <ProjectReference Include="..\Framework.Infrastructure.Ioc.Core\Framework.Infrastructure.Ioc.Core.csproj" />
   </ItemGroup>
 
 </Project>
