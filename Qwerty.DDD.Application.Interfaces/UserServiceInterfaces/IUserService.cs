@@ -14,5 +14,6 @@ namespace Qwerty.DDD.Application.Interfaces.UserServiceInterfaces
         Task<List<User>> GetIdentituByIds(List<long> ids);
         Task<bool> ValiedUser(string userName, string password);
         Task<User> Login(string userName, string password);
+        Task<bool> Identity(long userId, string realName, string identityNo);
     }
 }

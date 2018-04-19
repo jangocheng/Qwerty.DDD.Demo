@@ -32,5 +32,14 @@ namespace Qwerty.DDD.Api.Controllers
             var user = await _userService.Login(name, password);
             return Ok(new { Succeed = true, Data = user, Message = "" });
         }
+
+
+        [Route("user.identity.valied")]
+        [HttpGet]
+        public async Task<IActionResult> Identity(long userId, string realName, string idetntityNo)
+        {
+            var result = await _userService.Identity(userId,realName, idetntityNo);
+            return Ok(new { Succeed = result});
+        }
     }
 }

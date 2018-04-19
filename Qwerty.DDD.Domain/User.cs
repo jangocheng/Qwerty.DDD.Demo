@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using AutoMapper;
 using Framework.Domain.Core;
 using Framework.Infrastructure.Interfaces.Core.Event;
@@ -28,9 +29,18 @@ namespace Qwerty.DDD.Domain
 
         public async Task Identity()
         {
-            var userIdentity = Mapper.Map<UserIdentity>(this);
-            _eventBus = ServiceLocator.Instance.GetService<IEventBus>();
-            await _eventBus.Publish(userIdentity);
+            try
+            {
+                var userIdentity = Mapper.Map<UserIdentity>(this);
+                _eventBus = ServiceLocator.Instance.GetService<IEventBus>();
+                await _eventBus.Publish(userIdentity);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+           
         }
     }
 }

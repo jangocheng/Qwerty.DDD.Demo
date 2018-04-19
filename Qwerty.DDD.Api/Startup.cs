@@ -1,4 +1,5 @@
-﻿using Qwerty.DDD.BootStrapping;
+﻿using Framework.Infrastructure.Ioc.Core;
+using Qwerty.DDD.BootStrapping;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -37,6 +38,7 @@ namespace Qwerty.DDD.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            ServiceLocator.Instance = app.ApplicationServices;
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 

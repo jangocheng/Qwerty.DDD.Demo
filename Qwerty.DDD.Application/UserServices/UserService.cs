@@ -5,6 +5,7 @@ using Framework.Infrastructure.Interfaces.Core;
 using Microsoft.EntityFrameworkCore;
 using Qwerty.DDD.Application.Interfaces.UserServiceInterfaces;
 using Qwerty.DDD.Domain;
+using Qwerty.DDD.Domain.Events;
 using Qwerty.DDD.Domain.Repository.Interfaces.UserRepositoryInterfaces;
 
 namespace Qwerty.DDD.Application.UserServices
@@ -83,6 +84,14 @@ namespace Qwerty.DDD.Application.UserServices
         public async Task<User> Login(string userName, string password)
         {
             return await _userRepository.ValidUser(userName, password).FirstOrDefaultAsync();
+        }
+
+        public async Task<bool> Identity(long userId, string realName, string identityNo)
+        {
+            var user = await _userRepository.GetIdentityById(userId).FirstOrDefaultAsync();
+            user.UserIdentity = new UserIdentity() { UserId = userId, RealName = realName, IdentityNo = identityNo };
+            await user.Identity();
+            return true;
         }
     }
 }

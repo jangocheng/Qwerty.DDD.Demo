@@ -13,6 +13,7 @@ namespace Qwerty.DDD.Infrastructure.Repository.MapConfigurations.IdentityMapping
             entityTypeBuilder.Property(i => i.Id).ValueGeneratedOnAdd();
             entityTypeBuilder.Property(i => i.Name);
             entityTypeBuilder.Property(i => i.Password);
+            entityTypeBuilder.Ignore(i => i.UserIdentity);
         }
     }
 }
