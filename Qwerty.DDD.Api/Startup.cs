@@ -1,10 +1,10 @@
 ﻿using Framework.Infrastructure.Ioc.Core;
-using Qwerty.DDD.BootStrapping;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Qwerty.DDD.BootStrapping;
 
 namespace Qwerty.DDD.Api
 {
@@ -25,14 +25,15 @@ namespace Qwerty.DDD.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //添加数据库连接
+            services.Configure(Configuration["data:ConnectionString"]);
             // Add framework services.
             services.AddMvc()
                 .AddJsonOptions(options =>
             {
                 options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm";
             });
-            //添加数据库连接
-            services.Configure(Configuration["data:ConnectionString"]);
+     
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
